@@ -1,9 +1,8 @@
 # Geom99Week1
-Geom99 Week 1 Checklist
 # Directions API URL
 Directions From Toronto Pearson International Airport to Toronto Eaton's Centre Shopping Mall! 
 https://maps.googleapis.com/maps/api/directions/json?origin=Toronto+Pearson+International+Airport&destination=CF+Toronto+Eaton+Centre&key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M
-# JSON Return
+## JSON Return
 {
    "geocoded_waypoints" : [
       {
