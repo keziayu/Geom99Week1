@@ -16,3 +16,6 @@ https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJe3u5IUsvK4g
    "status" : "OK"
 }
 ```
+###### Sources
+https://developers.google.com/places/web-service/details
+>To find the ID of a particular place: https://developers.google.com/places/web-service/place-id
