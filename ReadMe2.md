@@ -1,6 +1,7 @@
 # Places API 
-https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJe3u5IUsvK4gR_PyyMgWDpoc&fields=name,rating,formatted_phone_number&key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M
 >URL for Canada's Wonderland, returning name, phone number and rating of the Place. 
+https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJe3u5IUsvK4gR_PyyMgWDpoc&fields=name,rating,formatted_phone_number&key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M
+
 ### JSON Return
 ```
 {
