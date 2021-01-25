@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <!-- polyfill fills holes/gaps in different browsers ie: safari  vs. firefox -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> 
+    <!-- script src below Opening Javascript API (code necessary to open map) -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M&callback=initMap&libraries=&v=weekly,geometry,places"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 90%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: aliceblue;
+      }
+      .content {
+          margin: 10px;
+          padding: 5px;
+      }
+      h1 {
+        color: darkslategray;
+      }
+
+      p {
+        color:darkslategray;
+      }
+
+      .button {
+        color: white;
+        /* text-decoration: none; */
+        background-color: orange;
+        padding: 7px;
+        height: 150px;
+        font-size: large;
+        font-weight: bold;
+      }
+
+    </style>
+    <script>
+      let map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -8.846275, lng: 115.138394 },
+          zoom: 15,
+        });
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="map2"></div>
+    <div class= content>
+        <h1>OMNIA Dayclub Bali</h1>
+        <p>Day and night club with pools, 3 bars and live DJ events located in Uluwatu,Bali , Indonesia.  </p>
+        <a href="https://www.omniabali.com" class="button">omniabali.com</a>
+    </div>
+    
+  </body>
+</html>
