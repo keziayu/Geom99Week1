@@ -1,4 +1,10 @@
-# Google Maps API 
+# WebGIS Development: Google Maps API 
+### Google MyMaps Tutorial
+>Embedded map in website:  
+https://keziayu.github.io/Geom99Week1/sharkspotter.html
+### JavaScript API (HTML Interactive Map)
+>Location: Omnia Dayclub:
+https://keziayu.github.io/Geom99Week1/helloworld.html
 ### Directions API URL (JSON Return)
 API address JSON return for directions from Toronto Pearson International Airport to Toronto Eaton's Centre Shopping Mall! 
 https://maps.googleapis.com/maps/api/directions/json?origin=Toronto+Pearson+International+Airport&destination=CF+Toronto+Eaton+Centre&key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M
