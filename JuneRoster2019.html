@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catching Flights</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 70%;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #1F456E;
+        background-image: url("images/cloud.jpg");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      header {
+          width: 100%;
+      }
+
+      h1 {
+          color: whitesmoke;
+          margin-left: 40px;
+          margin-top: 60px;
+      }
+
+      h2, h5 {
+          color:#1F456E;
+          margin-left: 40px;
+      }
+
+      .content {
+          background-color: white;
+          width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 2px;
+      }
+
+      h3 {
+          color: black;
+          margin: 30px;
+          padding: 20px;
+          text-align: center;
+
+      }
+
+      h6 {
+          color: #1F456E;
+          text-align: center;
+          padding: 30px;
+      }
+
+      p {
+          color: black;
+          margin: 20px;
+          padding: 10px;
+          width: 80%;
+          margin-left: auto;
+          margin-right:auto;
+      }
+
+      footer {
+          height: 70px;
+          background-color: silver;
+      }
+
+    </style>
+    <script>
+      function initMap() {
+        const mapVar = new google.maps.Map(document.getElementById("map"), {
+          zoom: 6,
+          center: { lat: 45.4042, lng: -71.8929 },
+          mapTypeId: 'hybrid'
+        });
+        // Create an array of alphabetical characters used to label the markers.
+        const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        const markers = locations.map((location, i) => {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length],
+          });
+        });
+       
+
+        // Add a marker clusterer to manage the markers.
+
+        var markerCluster = new MarkerClusterer(mapVar, markers, {
+          imagePath: `./images/m`
+        });
+      }
+
+      const locations = [
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "7:45am",
+           date: 2019-06-07,
+       },
+
+       {
+           name: "Montreal-Pierre Elliot Trudeau International Airport",
+           code: "YUL",
+           lat: 45.4657, 
+           lng: -73.7455,
+           time: "9:12am",
+           date: 2019-06-07, 
+       },
+
+       {
+           name: "Halifax Stanfield International Airport",
+           code: "YHZ",
+           lat: 44.8865, 
+           lng: -63.5153,
+           time: "12:29pm",
+           date: 2019-06-07,
+       },
+
+       {
+           name: "St. John's International Airport",
+           code: "YYT",
+           lat: 47.6212, 
+           lng: -52.7424,
+           time: "3:18pm",
+           date: 2019-06-07,
+       },
+
+       {
+        name: "St. John's International Airport",
+           code: "YYT",
+           lat: 47.6212, 
+           lng: -52.7424,
+           time: "5:05am",
+           date: 2019-06-08,
+       },
+
+       {
+           name: "Halifax Stanfield International Airport",
+           code: "YHZ",
+           lat: 44.8865, 
+           lng: -63.5153,
+           time: "6:43am",
+           date: 2019-06-08,
+        
+       },
+
+       {
+           name: "Ottawa International Airport",
+           code: "YOW",
+           lat: 45.3192, 
+           lng: -75.6692,
+           time: "8:36am",
+           date: 2019-06-08,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "10:56am",
+           date: 2019-06-08,
+
+       },
+
+       {
+           name: "London International Airport",
+           code: "YXU",
+           lat: 43.0265, 
+           lng: -81.1507,
+           time: "1:17pm",
+           date: 2019-06-08,
+       },
+
+       {
+           name: "London International Airport",
+           code: "YXU",
+           lat: 43.0265, 
+           lng: -81.1507,
+           time: "6:10am",
+           date: 2019-06-09,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "6:56am",
+           date: 2019-06-09,
+       },
+
+       {
+           name: "Ottawa International Airport",
+           code: "YOW",
+           lat: 45.3192, 
+           lng: -75.6692,
+           time: "9:09am",
+           date: 2019-06-09,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "10:56am",
+           date: 2019-06-09,
+       },
+
+       {
+           name: "Fredericton International Airport",
+           code: "YFC",
+           lat: 45.8728, 
+           lng: -66.5297,
+           time: "3:25pm",
+           date: 2019-06-09,
+       },
+
+       {
+           name: "Fredericton International Airport",
+           code: "YFC",
+           lat: 45.8728, 
+           lng: -66.5297,
+           time: "6:00am",
+           date: 2019-06-10,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "7:25am",
+           date: 2019-06-10,
+       },
+
+       {
+           name: "Montreal-Pierre Elliot Trudeau International Airport",
+           code: "YUL",
+           lat: 45.4657, 
+           lng: -73.7455,
+           time: "10:27am",
+           date: 2019-06-10,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "12:46pm",
+           date: 2019-06-10, 
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "6:30am",
+           date: 2019-06-21,
+       },
+
+       {
+           name: "Montreal-Pierre Elliot Trudeau International Airport",
+           code: "YUL",
+           lat: 45.4657, 
+           lng: -73.7455,
+           time: "7:57am",
+           date: 2019-06-21,  
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "10:01am",
+           date: 2019-06-21,
+       },
+
+       {
+           name: "Fredericton International Airport",
+           code: "YFC",
+           lat: 45.8728, 
+           lng: -66.5297,
+           time: "3:24pm",
+           date: 2019-06-21,
+       },
+
+       {
+           name: "Fredericton International Airport",
+           code: "YFC",
+           lat: 45.8728, 
+           lng: -66.5297,
+           time: "6:00am",
+           date: 2019-06-22,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "7:25am",
+           date: 2019-06-22,
+       },
+
+       {
+           name: "Montreal-Pierre Elliot Trudeau International Airport",
+           code: "YUL",
+           lat: 45.4657, 
+           lng: -73.7455,
+           time: "10:27am",
+           date: 2019-06-22,
+       },
+
+       {
+           name: "Montreal-Pierre Elliot Trudeau International Airport",
+           code: "YUL",
+           lat: 45.4657, 
+           lng: -73.7455,
+           time: "7:00am",
+           date: 2019-06-23,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "8:31am",
+           date: 2019-06-23,
+       },
+
+       {
+           name: "Quebec city Jean Lesage International Airport",
+           code: "YQB",
+           lat: 46.7907, 
+           lng: -71.3886,
+           time: "10:56am",
+           date: 2019-06-23,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "1:22pm",
+           date: 2019-06-23,
+       },
+
+       {
+           name: "Greater Moncton Romeo LeBlanc International Airport",
+           code: "YQM",
+           lat: 46.1162, 
+           lng: -64.6884,
+           time: "5:53pm",
+           date: 2019-06-23,
+       },
+
+       {
+           name: "Greater Moncton Romeo LeBlanc International Airport",
+           code: "YQM",
+           lat: 46.1162, 
+           lng: -64.6884,
+           time: "6:25am",
+           date: 2019-06-24,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "8:14am",
+           date: 2019-06-24,
+       },
+
+       {
+           name: "Quebec city Jean Lesage International Airport",
+           code: "YQB",
+           lat: 46.7907, 
+           lng: -71.3886,
+           time: "10:51am",
+           date: 2019-06-24,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "1:17pm",
+           date: 2019-06-24,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "1:00pm",
+           date: 2019-06-27, 
+       },
+
+       {
+           name: "Montreal-Pierre Elliot Trudeau International Airport",
+           code: "YUL",
+           lat: 45.4657, 
+           lng: -73.7455,
+           time: "2:24pm",
+           date: 2019-06-27,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "4:46pm",
+           date: 2019-06-27,
+       },
+
+       {
+           name: "London International Airport",
+           code: "YXU",
+           lat: 43.0265, 
+           lng: -81.1507,
+           time: "6:18pm",
+           date: 2019-06-27,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "7:56pm",
+           date: 2019-06-27,
+       },
+
+       {
+           name: "London International Airport",
+           code: "YXU",
+           lat: 43.0265, 
+           lng: -81.1507,
+           time: "11:02pm",
+           date: 2019-06-27, 
+       },
+
+       {
+           name: "London International Airport",
+           code: "YXU",
+           lat: 43.0265, 
+           lng: -81.1507,
+           time: "2:25pm",
+           date: 2019-06-28,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "3:11pm",
+           date: 2019-06-28,
+       },
+
+       {
+           name: "Ottawa International Airport",
+           code: "YOW",
+           lat: 45.3192, 
+           lng: -75.6692,
+           time: "5:08pm",
+           date: 2019-06-28,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "6:56pm",
+           date: 2019-06-28,
+       },
+
+       {
+           name: "London International Airport",
+           code: "YXU",
+           lat: 43.0265, 
+           lng: -81.1507,
+           time: "11:02pm",
+           date: 2019-06-28,
+       },
+
+       {
+           name: "London International Airport",
+           code: "YXU",
+           lat: 43.0265, 
+           lng: -81.1507,
+           time: "7:10pm",
+           date: 2019-06-29,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "7:56pm",
+           date: 2019-06-29,
+       },
+
+       {
+           name: "Quebec city Jean Lesage International Airport",
+           code: "YQB",
+           lat: 46.7907, 
+           lng: -71.3886,
+           time: "11:56pm",
+           date: 2019-06-29,
+       },
+
+       {
+           name: "Quebec city Jean Lesage International Airport",
+           code: "YQB",
+           lat: 46.7907, 
+           lng: -71.3886,
+           time: "5:45pm",
+           date: 2019-06-30,
+       },
+
+       {
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "7:37pm",
+           date: 2019-06-30,
+       },
+
+      ];
+    </script>
+  </head>
+  <body>
+    <header>
+        <h1>Roster Map: Airports I visited in June, 2019</h1>
+        <h5>Kezia Yu on January 31st, 2021</h5>
+    </header>   
+    <div id="map"></div>
+    <div class="content">
+        <h3>First Month Flying</h3>
+        <p> This map shows the amount of times I was at a certain airport in June, 2019 as a Flight Attendant for WestJet Encore.
+            WestJet Encore is the airline that I work for, where we fly shorthaul flights on the Bombarider 
+            Q400 - Dash 8 family at a maximum altitude of 25,000ft. We carry a maximum of 78 guests,
+            with 2 flight crew and 2 cabin crew responsible for the safe journey of our guests and employees. At the company that I 
+            work for, a pairing is the sequence of flights (legs) that start and end at the same base. In my case, I was based 
+            out of Toronto, Ontario. This data is from my roster report for the month of June, where I had three 4-day pairings. 
+            This means that I was away from my homebase for 4 days. A pairing can go from 1 day up to 6 days. Anything beyond 
+            working 6 days consecutively is illegal due to the high risk of fatigue and unsafe job performance.</p> 
+
+        <p>The airports that I visitied were all in the Eastcoast of Canada as I am based out of Toronto. Our Q400 cannot fly 
+        from east to west without having to refuel and this is also highly dependent on the weight we are carrying. To operate the Westcoast 
+        flights, I would need to bid for those locations. As you can see, I was at the Toronto Pearson Airport 20 times in the month of June. 
+        Being based out of Toronto means that we have many turns from different Eastcoast cities. The longest flight I operated was 
+        from Toronto Pearson Airport to the Greater Moncton Romeo LeBlanc International Airport, which is around 3 and half hours. </p>
+    </div>
+    <footer>
+        <h6>Stay tuned for another map of airports I visited - but in Westcoast, Canada.</h6>
+    </footer>
+    
+  </body>
+</html>
