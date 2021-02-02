@@ -100,20 +100,18 @@
         // create an array of markers based on a given "locations" array.
         // The map() method here has nothing to do with the Google Maps API.
 
+        // Image Source: Alice Design from Noun Project https://thenounproject.com/search/?q=airport&i=3406452
+        const image = "images/airport.png";
+
         const markers = locations.map((location, i) => {
           return new google.maps.Marker({
             position: location,
             label: labels[i % labels.length],
+            icon: image,
+            map: mapVar,
           });
         });
-       
-
-        // // Add a marker clusterer to manage the markers.
-
-        var markerCluster = new MarkerClusterer(mapVar, markers, {
-          imagePath: `./images/m`
-        });
-        
+            
         const flightPlanCoordinates = [
           {lat: 43.6677, lng: -79.6248},
           {lat: 45.4657, lng: -73.7455},
