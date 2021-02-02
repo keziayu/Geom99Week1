@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Catching Flights Not Feelings</title>
+    <title>Visited Airports</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
     <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
@@ -112,8 +112,23 @@
         var markerCluster = new MarkerClusterer(mapVar, markers, {
           imagePath: `./images/m`
         });
-      }
 
+        const flightPlanCoordinates = [
+          {lat: 43.6677, lng: -79.6248},
+          {lat: 45.4657, lng: -73.7455},
+          {lat: 44.8865, lng: -63.5153},
+          {lat: 47.6212, lng: -52.7424},
+        ];
+        const flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: "#FF0000",
+          strokeOpacity: 1.0,
+          strokeWeight: 2,
+        });
+        flightPath.setMap(map);
+      }
+      
       const locations = [
        {
            name: "Toronto Pearson International Airport",
