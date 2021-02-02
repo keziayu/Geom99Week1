@@ -99,6 +99,7 @@
         // Note: The code uses the JavaScript Array.prototype.map() method to
         // create an array of markers based on a given "locations" array.
         // The map() method here has nothing to do with the Google Maps API.
+
         const markers = locations.map((location, i) => {
           return new google.maps.Marker({
             position: location,
@@ -107,18 +108,35 @@
         });
        
 
-        // Add a marker clusterer to manage the markers.
+        // // Add a marker clusterer to manage the markers.
 
         var markerCluster = new MarkerClusterer(mapVar, markers, {
           imagePath: `./images/m`
         });
-
+        
         const flightPlanCoordinates = [
           {lat: 43.6677, lng: -79.6248},
           {lat: 45.4657, lng: -73.7455},
           {lat: 44.8865, lng: -63.5153},
           {lat: 47.6212, lng: -52.7424},
+          {lat: 44.8865, lng: -63.51531},
+          {lat: 45.3192, lng: -75.6692},
+          {lat: 43.6677, lng: -79.6248},
+          {lat: 43.0265, lng: -81.1507},
+          {lat: 43.6677, lng: -79.6248},
+          {lat: 45.3192, lng: -75.6692},
+          {lat: 43.6677, lng: -79.6248},
+          {lat: 45.8728, lng: -66.5297},
+          {lat: 43.6677, lng: -79.6248},
+          {lat: 45.4657, lng: -73.7455},
+          {lat: 43.6677, lng: -79.6248},
+          {lat: 46.7907, lng: -71.3886},
+          {lat: 43.6677, lng: -79.6248},
+          {lat: 46.1162, lng: -64.6684},
+
         ];
+        // Source: https://developers.google.com/maps/documentation/javascript/examples/polyline-simple
+        // Sets 2-pixel-wide red polyline showing the flight paths for the month of June. 2019. 
         const flightPath = new google.maps.Polyline({
           path: flightPlanCoordinates,
           geodesic: true,
@@ -126,9 +144,9 @@
           strokeOpacity: 1.0,
           strokeWeight: 2,
         });
-        flightPath.setMap(map);
+        flightPath.setMap(mapVar);
       }
-      
+
       const locations = [
        {
            name: "Toronto Pearson International Airport",
@@ -587,7 +605,7 @@
   </head>
   <body>
     <header>
-        <h1>Roster Map: Airports I visited in June, 2019</h1>
+        <h1>Roster Map: Flight Paths of June,2019</h1>
         <h5>Kezia Yu on January 31st, 2021</h5>
     </header>   
     <div id="map"></div>

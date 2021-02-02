@@ -3,6 +3,8 @@
   <head>
     <title>Simple Polylines</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M&callback=initMap&libraries=&v=weekly"
       defer
@@ -27,10 +29,10 @@
       // the first trans-Pacific flight between Oakland, CA, and Brisbane,
       // Australia which was made by Charles Kingsford Smith.
       function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 3,
-          center: { lat: 0, lng: -180 },
-          mapTypeId: "terrain",
+        const mapVar = new google.maps.Map(document.getElementById("map"), {
+          zoom: 6,
+          center: { lat: 45.4042, lng: -71.8929 },
+          mapTypeId: 'hybrid'
         });
         const flightPlanCoordinates = [
           {lat: 43.6677, lng: -79.6248},
@@ -45,7 +47,22 @@
           strokeOpacity: 1.0,
           strokeWeight: 2,
         });
-        flightPath.setMap(map);
+        flightPath.setMap(mapVar);
+        
+        const markers = locations.map((location, i) => {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length],
+          });
+        });
+        const locations = [{
+           name: "Toronto Pearson International Airport",
+           code: "YYZ",
+           lat: 43.6677, 
+           lng: -79.6248,
+           time: "7:45am",
+           date: 2019-06-07,
+       },]
       }
     </script>
   </head>
