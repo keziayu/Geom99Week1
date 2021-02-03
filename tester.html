@@ -91,39 +91,20 @@
           center: { lat: 45.4042, lng: -71.8929 },
           mapTypeId: 'hybrid',
         });
-        // Add some markers to the map.
-        // Note: The code uses the JavaScript Array.prototype.map() method to
-        // create an array of markers based on a given "locations" array.
-        // The map() method here has nothing to do with the Google Maps API.
 
-        // Image Source: Alice Design from Noun Project https://thenounproject.com/search/?q=airport&i=3406452
-        const image = "images/airport.png";
+        var locations = [
+          ["Toronto Pearson International Airport","YYZ", 43.6677, -79.6248],
+          ["Montreal-Pierre Elliot Trudeau International Airport", "YUL", 45.4657, -73.7455],
+          ["Halifax Stanfield International Airport", "YHZ", 44.8865, -63.5153],
+          ["St. John's International Airport", "YYT", 47.6212, -52.7424],
+          ["Ottawa International Airport", "YOW", 45.3192, -75.6692],
+          ["London International Airport", "YXU", 43.0265, -81.1507],
+          ["Fredericton International Airport", "YFC", 45.8728, -66.5297],
+          ["Quebec city Jean Lesage International Airport", "YQB", 46.7907, -71.3886],
+          ["Greater Moncton Romeo LeBlanc International Airport", "YQM", 46.1162, -64.6884],
+        ];
 
-        const infowindow = new google.maps.Infowindow ({});
-
-        locations.forEach(function(location) {
-          const marker = new google.maps.Marker({
-            position: locations,
-            map: map,
-            icon: image,
-            
-          })
-        })
-  
-
-        const markers = locations.map((location, i) => {
-          return new google.maps.Marker({
-            position: location,
-            icon: image,
-            map: mapVar,
-          });
-        });
-        
-        marker.addListener("click", () => {
-            infowindow.open(mapVar, marker);
-        });
-            
-        const flightPlanCoordinates = [
+        var flightPlanCoordinates = [
           {lat: 43.6677, lng: -79.6248},
           {lat: 45.4657, lng: -73.7455},
           {lat: 44.8865, lng: -63.5153},
@@ -142,105 +123,39 @@
           {lat: 46.7907, lng: -71.3886},
           {lat: 43.6677, lng: -79.6248},
           {lat: 46.1162, lng: -64.6684},
-
         ];
 
         // Source: https://developers.google.com/maps/documentation/javascript/examples/polyline-simple
         // Sets 2-pixel-wide red polyline showing the flight paths for the month of June. 2019. 
-        const flightPath = new google.maps.Polyline({
+        var flightPath = new google.maps.Polyline({
           path: flightPlanCoordinates,
           geodesic: true,
           strokeColor: "#FF0000",
           strokeOpacity: 1.0,
           strokeWeight: 2,
         });
+        
         flightPath.setMap(mapVar);
+        
+        const image = "images/airport.png";
+
+        for (i = 0; i < locations.length; i++) {
+          const marker = new google.maps.Marker({
+            position: {lat: locations[i][2], lng: locations[i][3]},
+            icon: image,
+            map: mapVar,
+            title: locations[i][0],
+          });
+
+          const infowindow = new google.maps.InfoWindow({
+            content: `<h5>${locations[i][0]}</h5>`+ `<h6>${locations[i][1]}</h6>`,
+          });
+
+          marker.addListener("click", () => {
+            infowindow.open(mapVar, marker);
+          });
+        };
       }
-
-      const locations = [
-       {
-           name: "Toronto Pearson International Airport",
-           code: "YYZ",
-           lat: 43.6677, 
-           lng: -79.6248,
-           time: "7:45am",
-           date: 2019-06-07,
-       },
-
-       {
-           name: "Montreal-Pierre Elliot Trudeau International Airport",
-           code: "YUL",
-           lat: 45.4657, 
-           lng: -73.7455,
-           time: "9:12am",
-           date: 2019-06-07, 
-       },
-
-       {
-           name: "Halifax Stanfield International Airport",
-           code: "YHZ",
-           lat: 44.8865, 
-           lng: -63.5153,
-           time: "12:29pm",
-           date: 2019-06-07,
-       },
-
-       {
-           name: "St. John's International Airport",
-           code: "YYT",
-           lat: 47.6212, 
-           lng: -52.7424,
-           time: "3:18pm",
-           date: 2019-06-07,
-       },
-
-       {
-           name: "Ottawa International Airport",
-           code: "YOW",
-           lat: 45.3192, 
-           lng: -75.6692,
-           time: "8:36am",
-           date: 2019-06-08,
-       },
-
-       {
-           name: "London International Airport",
-           code: "YXU",
-           lat: 43.0265, 
-           lng: -81.1507,
-           time: "1:17pm",
-           date: 2019-06-08,
-       },
-
-       {
-           name: "Fredericton International Airport",
-           code: "YFC",
-           lat: 45.8728, 
-           lng: -66.5297,
-           time: "3:25pm",
-           date: 2019-06-09,
-       },
-
-       {
-           name: "Quebec city Jean Lesage International Airport",
-           code: "YQB",
-           lat: 46.7907, 
-           lng: -71.3886,
-           time: "10:56am",
-           date: 2019-06-23,
-       },
-
-
-       {
-           name: "Greater Moncton Romeo LeBlanc International Airport",
-           code: "YQM",
-           lat: 46.1162, 
-           lng: -64.6884,
-           time: "5:53pm",
-           date: 2019-06-23,
-       },
-
-      ];
     </script>
   </head>
   <body>
