@@ -3,8 +3,6 @@
   <head>
     <title>Visited Airports</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
-    <script src="https://unpkg.com/@googlemaps/markerclustererplus/dist/index.min.js"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0xTf748bvW5IyuzLW5tF7UeRcC9cYE3M&callback=initMap&libraries=&v=weekly"
       defer
@@ -91,10 +89,9 @@
         const mapVar = new google.maps.Map(document.getElementById("map"), {
           zoom: 5,
           center: { lat: 45.4042, lng: -71.8929 },
-          mapTypeId: 'hybrid'
+          mapTypeId: 'hybrid',
         });
-        // Create an array of alphabetical characters used to label the markers.
-        const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
         // create an array of markers based on a given "locations" array.
@@ -103,10 +100,19 @@
         // Image Source: Alice Design from Noun Project https://thenounproject.com/search/?q=airport&i=3406452
         const image = "images/airport.png";
 
+        const contentString = `${locations.name}`;
+
+        const infowindow = locations.map((location,i) => {
+            return new google.maps.InfoWindow({
+                content: contentString,
+                position: location,
+                map: mapVar,
+            });
+        });
+        
         const markers = locations.map((location, i) => {
           return new google.maps.Marker({
             position: location,
-            label: labels[i % labels.length],
             icon: image,
             map: mapVar,
           });
