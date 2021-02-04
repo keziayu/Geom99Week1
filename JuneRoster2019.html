@@ -132,14 +132,29 @@
           {lat: 46.1162, lng: -64.6684},
         ];
 
+        // Define a symbol using SVG path notation, with an opacity of 1.
+        // Source: https://developers.google.com/maps/documentation/javascript/examples/overlay-symbol-dashed
+        const lineSymbol = {
+          path: "M 0,-1 0,1",
+          strokeOpacity: 1,
+          scale: 2,
+        };
+
         // Source: https://developers.google.com/maps/documentation/javascript/examples/polyline-simple
         // Sets 2-pixel-wide red polyline showing the flight paths for the month of June. 2019. 
-        var flightPath = new google.maps.Polyline({
+        const flightPath = new google.maps.Polyline({
           path: flightPlanCoordinates,
           geodesic: true,
           strokeColor: "#FF0000",
-          strokeOpacity: 1.0,
-          strokeWeight: 2,
+          strokeOpacity: 0,
+          strokeWeight: 0,
+          icons: [
+            {
+              icon: lineSymbol,
+              offset: 0,
+              repeat: "20px",
+            },
+          ],
         });
         
         flightPath.setMap(mapVar);
