@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Fills the gaps for different browsers -->
+    <!-- Load maps JavaScript API inline-->
+    <!-- defer: asks the browser to parse the HTML document first 
+      before loading the script. When script is executed, it will call the function specificed using the callback parameter -->
     <title>Visited Airports</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
@@ -90,6 +94,7 @@
 
     </style>
     <script>
+      // Define variable mapVar and assign that vairable to a new map object. 
       function initMap() {
         const mapVar = new google.maps.Map(document.getElementById("map"), {
           zoom: 5,
